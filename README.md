@@ -202,9 +202,7 @@ Under menu Dashboard, operation data is available:
    
 # Subscription  
 
-One-month free subscription is preset when JANUSEC Privacy is installed.  
-If no more subscription when it expires, JANUSEC Privacy will be read only.  
-Subscription is available by monthly or yearly, please refer to https://www/janusec.com/pricing for more information.  
+One-month free subscription is preset when JANUSEC Privacy is installed. 
 
 # Support  
 
