@@ -1,8 +1,10 @@
   
   
-JANUSEC Privacy Installation and User's Guide  
-   
-Table of Contents  
+# JANUSEC Privacy Management Software Installation and User's Guide   
+
+JANUSEC Privacy Management Software, provides on-premise IT solutions for privacy Management, including records of processing activities, privacy impact assessments, asset security assessments, control measures, etc., to help enterprises demonstrate privacy compliance with accountability (GDPR etc.).
+
+## Table of Contents   
 1.  [Installation](#installation)    
 1.1 [System Requirements](#system-requirements)      
 1.2 [Installation Steps](#installation-steps)      
@@ -20,8 +22,7 @@ Table of Contents
 6.  [Prepare to Report](#prepare-to-report)    
 7.  [Subscription](#subscription)    
 8.  [Support](#support)    
-  
-   
+
 #  Installation  
   
 ##  System Requirements    
@@ -33,11 +34,11 @@ JANUSEC Privacy adopts on-premise deployment. System requirements:
 
 ## Installation Steps  
 
-Step 1: Install PostgreSQL (if PostgreSQL is ready, skip this step)  
+#### Step 1: Install PostgreSQL (if PostgreSQL is ready, skip this step)  
 Switch to root user, and run command:  
 > #apt install postgresql  
   
-Step 2: Switch to postgres and create database and user  
+#### Step 2: Switch to postgres and create database and user  
 > #su - postgres  
 > $psql  
 > =>create user janusecprivacy with password 'J@nusec123';  
@@ -51,7 +52,7 @@ Then test the database connection:
 
 Note: Database name and user name cannot include minus sign '-' .  
 
-Step 3: Check database connection  
+#### Step 3: Check database connection  
 > $psql -h 127.0.0.1 -U janusecprivacy -W janusecprivacy  
 
 Input password (J@nusec123 In the above example), if you see:  
@@ -59,14 +60,14 @@ Input password (J@nusec123 In the above example), if you see:
 
 Test OK, input \q exit the console.  
   
-Step 4: Install JANUSEC Privacy  
+#### Step 4: Install JANUSEC Privacy  
 > #tar -zxf janusec-privacy.tar.gz  
 > #cd janusec-privacy  
 > #./install.sh  
 
 It will be installed to `/usr/local/janusec-privacy/`  
   
-Step 5: Modify config.json and start service  
+#### Step 5: Modify config.json and start service  
 > #cd /usr/local/janusec-privacy/  
 
 Then use vi or other editor to edit config.json:  
@@ -95,7 +96,7 @@ If no HTTPS required, then set listen_https to empty string:
 
 If the length of password is less then 32bits, it will be encrypted automatically. The encrypted password can be modified by new password if the password was changed.  
   
-Step 6: Start janusec-privacy.service and check its status  
+#### Step 6: Start janusec-privacy.service and check its status  
 > #systemctl start janusec-privacy  
 > #systemctl status janusec-privacy  
 
@@ -206,7 +207,7 @@ One-month free subscription is preset when JANUSEC Privacy is installed.
 
 # Support  
 
-Online Support: https://www.janusec.com/tickets/new   
+Online [Support](https://www.janusec.com/tickets/new)   
 Email: support at janusec dot com  
 Official Site: https://www.janusec.com   
   
