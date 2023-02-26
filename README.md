@@ -1,8 +1,8 @@
   
   
-# JANUSEC Privacy Management Software Installation and User's Guide   
+# JANUCAT building Compliance, Accountability and Transparency   
 
-JANUSEC Privacy Management Software, provides on-premise IT solutions for privacy Management, including records of processing activities, privacy impact assessments, asset security assessments, control measures, etc., to help enterprises demonstrate privacy compliance with accountability (GDPR etc.).
+JANUCAT is a on-premise data privacy governance solutions aimed at building compliance, accountability and transparency. The main functions of JANUCAT include records of processing activities, data protection impact assessments, asset security assessments, control measures, etc., to help enterprises demonstrate privacy compliance with accountability (GDPR etc.).
 
 ## Table of Contents   
 1.  [Installation](#installation)    
@@ -27,50 +27,60 @@ JANUSEC Privacy Management Software, provides on-premise IT solutions for privac
   
 ##  System Requirements    
   
-JANUSEC Privacy adopts on-premise deployment. System requirements:    
+JANUCAT adopts on-premise deployment. System requirements:    
 * Operating System: Debian 9/10/11+, AMD64 (or X86-64)    
-* Database: PostgreSQL 10/11/12/13+  
+* Database: Optional, PostgreSQL 10/11/12/13+ or SQLite3    
 * RAM: 2GB+  
 
 ## Installation Steps  
 
-#### Step 1: Install PostgreSQL (if PostgreSQL is ready, skip this step)  
-Switch to root user, and run command:  
+#### Step 1: Install PostgreSQL (optional, if PostgreSQL is ready or use SQLite, skip this step)  
+
+Switch to root user, and run command:   
+
 > #apt install postgresql  
+
   
 #### Step 2: Switch to postgres and create database and user  
+
 > #su - postgres  
 > $psql  
-> =>create user janusecprivacy with password 'J@nusec123';  
-> =>create database janusecprivacy owner janusecprivacy;  
-> =>grant all privileges on database janusecprivacy to janusecprivacy;  
+> =>create user janucat with password 'J@nusec123';  
+> =>create database janucat owner janucat;  
+> =>grant all privileges on database janucat to janucat;  
 > =>\q  
 > $exit  
 
-Then test the database connection:  
-> $psql -h 127.0.0.1 -U janusecprivacy -W janusecprivacy  
+Then test the database connection:   
+
+> $psql -h 127.0.0.1 -U janucat -W janucat  
 
 Note: Database name and user name cannot include minus sign '-' .  
 
-#### Step 3: Check database connection  
-> $psql -h 127.0.0.1 -U janusecprivacy -W janusecprivacy  
+#### Step 3: Check database connection   
 
-Input password (J@nusec123 In the above example), if you see:  
-> janusecprivacy=>  
+> $psql -h 127.0.0.1 -U janucat -W janucat  
+
+Input password (J@nusec123 In the above example), if you see:   
+
+> janucat=>  
 
 Test OK, input \q exit the console.  
   
-#### Step 4: Install JANUSEC Privacy  
-> #tar -zxf janusec-privacy.tar.gz  
-> #cd janusec-privacy  
+#### Step 4: Install JANUCAT  
+
+> #tar -zxf janucat.tar.gz  
+> #cd janucat  
 > #./install.sh  
 
-It will be installed to `/usr/local/janusec-privacy/`  
+It will be installed to `/usr/local/janucat/`  
   
-#### Step 5: Modify config.json and start service  
-> #cd /usr/local/janusec-privacy/  
+#### Step 5: Modify config.json and start service   
 
-Then use vi or other editor to edit config.json:  
+> #cd /usr/local/janucat/  
+
+Then use vi or other editor to edit config.json:   
+
 ```
 {  
         "site": {  
@@ -79,45 +89,57 @@ Then use vi or other editor to edit config.json:
                 "listen_https": ":8443",  
                 "certificate": "/path/to/public.pem",  
                 "certificate_key": "/path/to/private.key",  
-                "force_https": false  
+                "force_https": false,  
+                "database_type": "sqlite"    
         },  
         "database": {  
                 "host": "127.0.0.1",  
                 "port": "5432",  
-                "user": " janusecprivacy",  
+                "user": " janucat",  
                 "password": "J@nusec123",  
-                "dbname": " janusecprivacy "  
+                "dbname": " janucat "  
         }  
 }  
 ```
 
 If no HTTPS required, then set listen_https to empty string:  
+
 > "listen_https": ""  
 
-If the length of password is less then 32bits, it will be encrypted automatically. The encrypted password can be modified by new password if the password was changed.  
+Database type "database_type" may be "sqlite" or "postgres" .  
+
+> " database_type ": "sqlite"  
+
+or  
+
+> " database_type ": "postgres"  
+
+"postgres" is preferred for production environment, and "sqlite" is preferred for test environment. If "sqlite" is used, then skip the configuration items under "database".
+For PostgreSQL: If the length of password is less then 32bits, it will be encrypted automatically. The encrypted password can be modified by new password if the password was changed.  
   
-#### Step 6: Start janusec-privacy.service and check its status  
-> #systemctl start janusec-privacy  
-> #systemctl status janusec-privacy  
+#### Step 6: Start janucat.service and check its status   
+
+> #systemctl start janucat  
+> #systemctl status janucat  
 
 The result should like the following:  
 ```
-janusec-privacy.service - Janusec Privacy Compliance Governance
-   Loaded: loaded (/lib/systemd/system/janusec-privacy.service; enabled; vendor preset: disabled)
+janucat.service - JANUCAT Compliance Governance
+   Loaded: loaded (/lib/systemd/system/janucat.service; enabled; vendor preset: disabled)
    Active: active (running) since Sun 2022-06-19 12:46:22 CST; 1 weeks 0 days ago
      Docs: https://www.janusec.com/
  Main PID: 20818 (bash)
-   CGroup: /system.slice/janusec-privacy.service
-           ├─20818 /bin/bash -c /usr/local/janusec-privacy/janusec-privacy >> /usr/local/janusec-privacy/log/error.log ...           └─20819 /usr/local/janusec-privacy/janusec-privacy
+   CGroup: /system.slice/janucat.service
+           ├─20818 /bin/bash -c /usr/local/janucat/janucat >> /usr/local/janucat/log/error.log ...           └─20819 /usr/local/janucat/janucat
 ```
    
-If the status of this service is enabled and active (running), it means JANUSEC Privacy successfully run, otherwise you need check the `/usr/local/janusec-privacy/log/error.log` and `config.json` .  
+If the status of this service is enabled and active (running), it means JANUCAT successfully run, otherwise you need check the `/usr/local/janucat/log/error.log` and `config.json` .  
   
 # Initial Configuration    
   
 ## Admin Login  
 
-First, login the system `http://Domain_or_IP_Address:8088/` , the port number should be consistent with the configuration file (`/usr/local/janusec-privacy/config.json`).  
+First, login the system `http://Domain_or_IP_Address:8088/` , the port number should be consistent with the configuration file (`/usr/local/janucat/config.json`).  
 Please use username `admin` and password `J@nusec123`.  
    
 After the first login, modification the password for admin is required:  
@@ -153,7 +175,7 @@ And transfer mechanisms:
    
 ## Assessment Templates  
 
-Some typical templates were preset by JANUSEC Privacy, if other templates are required, please add to this list.  
+Some typical templates were preset by JANUCAT, if other templates are required, please add to this list.  
    
 ## Users Management  
 
@@ -203,7 +225,7 @@ Under menu Dashboard, operation data is available:
    
 # Subscription  
 
-One-month free subscription is preset when JANUSEC Privacy is installed. 
+One-month free subscription is preset when JANUCAT is installed. 
 
 # Support  
 
