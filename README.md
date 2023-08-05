@@ -2,7 +2,14 @@
   
 # JANUCAT building Compliance, Accountability and Transparency   
 
-JANUCAT is a SaaS data privacy governance solutions aimed at building compliance, accountability and transparency. The main functions of JANUCAT include records of processing activities, data protection impact assessments, asset security assessments, control measures, etc., to help enterprises demonstrate privacy compliance with accountability (GDPR etc.).
+JANUCAT is a SaaS or on-premise data privacy governance solutions aimed at building compliance, accountability and transparency. The main functions of JANUCAT include records of processing activities, data protection impact assessments, asset security assessments, control measures, etc., to help enterprises demonstrate privacy compliance with accountability (GDPR etc.).   
+
+JANUCAT aims to solve three problems:  
+
+* What data we have?   
+* Are they compliant?  
+* How to demonstrate compliance?  
+
 
 ## Table of Contents   
 1.  [Trial](#1-trial)    
@@ -27,8 +34,8 @@ JANUCAT is a SaaS data privacy governance solutions aimed at building compliance
   
 ## 1.1 System Requirements    
   
-JANUCAT provides SaaS service, so only web browser is required.   
-Chrome is preferred.    
+JANUCAT provides SaaS service, so only web browser is required (Chrome is preferred).       
+If you need on-premise private deployment by yourself, please select On-Premise/Private mode when you apply for free trial, once your application is approved, the download link and user guide will be send to you by email.    
 
 ## 1.2 Trial Application  
 
@@ -133,6 +140,9 @@ One-month free subscription is preset when JANUCAT is installed.
 # 8 Support  
 
 Online [Support](https://www.janusec.com/tickets/new)   
-Email: support at janusec dot com  
+Email: support at janusec dot com    
+WhatsApp Commuity: [JANUCAT Data Privacy](https://chat.whatsapp.com/IqKin08nwf4KrgL8FQ6Tgw)    
+QQ Group: 723175243    
 Official Site: https://www.janusec.com   
+
   
