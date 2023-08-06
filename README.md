@@ -31,7 +31,10 @@ JANUCAT aims to solve three problems:
 8.  [Support](#support)    
 
 # 1 Trial  
-  
+
+[JANUCAT Data Privacy Governance Introduction (PPT)](https://www.janusec.com/download/JANUCAT_Data_Privacy_Governance.pdf)    
+
+
 ## 1.1 System Requirements    
   
 JANUCAT provides SaaS service, so only web browser is required (Chrome is preferred).       
