@@ -144,7 +144,6 @@ One-month free subscription is preset when JANUCAT is installed.
 
 Online [Support](https://www.janusec.com/tickets/new)   
 Email: support at janusec dot com    
-WhatsApp Community: [JANUCAT Data Privacy](https://chat.whatsapp.com/IqKin08nwf4KrgL8FQ6Tgw)    
 QQ Group: 723175243    
 Official Site: https://www.janusec.com   
 
